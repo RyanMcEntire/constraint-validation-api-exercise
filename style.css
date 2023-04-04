@@ -1,0 +1,22 @@
+body {
+  background: #eaf4f4;
+  display: flex;
+  justify-content: center;
+}
+
+form {
+  width: 20rem;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+form > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.error {
+  height: 1rem;
+}

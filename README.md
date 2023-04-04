@@ -1,2 +1,2 @@
-# constraint-validation-api-exercise
+# constraint validation api exercise
 Practice using the Constraint Validation API to check a form
