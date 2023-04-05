@@ -18,7 +18,7 @@ form > div {
 }
 
 .error {
-    height: 1rem;
-    color: red;
+    height: 1.2rem;
+    color: rgba(255, 112, 112, 0.932);
     font-size: 0.8rem;
 }

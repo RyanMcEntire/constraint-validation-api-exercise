@@ -11,7 +11,7 @@
     <body>
         <form id="form" novalidate>
             <div>
-                <label for="email">email</label
+                <label for="email">Email</label
                 ><input
                     id="email"
                     type="email"
@@ -28,6 +28,7 @@
                     type="text"
                     name="country"
                     required
+                    pattern="^[a-zA-Z\s]*$"
                     maxlength="30"
                     minlength="3"
                 />
@@ -50,8 +51,9 @@
                     id="password"
                     type="password"
                     name="password"
+                    pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?/~_+-=|\]).{8}$"
                     required
-                    minlength="5"
+                    minlength="8"
                 />
                 <div class="error" id="password-error"></div>
             </div>
