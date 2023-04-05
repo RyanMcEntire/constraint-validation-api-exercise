@@ -19,6 +19,9 @@ form > div {
 
 .error {
     height: 1.2rem;
-    color: rgba(255, 112, 112, 0.932);
+    color: rgba(19, 28, 153, 0.932);
     font-size: 0.8rem;
+}
+.error.active {
+  color: rgba(255, 112, 112, 0.932)
 }

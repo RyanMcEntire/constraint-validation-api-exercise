@@ -13,6 +13,7 @@ const miscSelectors = {
     confirmPasswordError: document.getElementById('confirm-password-error'),
 };
 
+const form = document.getElementById('form');
 const submit = document.getElementById('submit');
 
 function requiredFieldResponse(fieldId) {
@@ -79,7 +80,6 @@ Object.values(inputSelectors).forEach((val) => {
 Object.values(inputSelectors).forEach((val) => {
     val.addEventListener('focusout', (e) => {
         e.target.style.background = '';
-        console.log(e);
         checkRequired(e);
     });
 });
@@ -139,7 +139,6 @@ inputSelectors.zipCode.addEventListener('input', () => {
     }
 });
 
-// password validator
 function showPasswordError() {
     if (inputSelectors.password.validity.tooShort) {
         miscSelectors.passwordError.textContent = `password should be at least ${password.minLength} characters. You entered ${password.value.length}`;
@@ -158,17 +157,39 @@ inputSelectors.password.addEventListener('input', () => {
     }
 });
 
-// confirms password
 function showConfirmPasswordError() {
     miscSelectors.confirmPasswordError.textContent = `Password doesn't match`;
     miscSelectors.confirmPasswordError.className = 'error active';
 }
 
 inputSelectors.confirmPassword.addEventListener('input', () => {
-    if (inputSelectors.confirmPassword.value === inputSelectors.password.value) {
+    if (
+        inputSelectors.confirmPassword.value === inputSelectors.password.value
+    ) {
         miscSelectors.confirmPasswordError.textContent = 'passwords match';
         miscSelectors.confirmPasswordError.className = 'error';
     } else {
         showConfirmPasswordError();
+    }
+});
+
+form.addEventListener('submit', (e) => {
+    if (!inputSelectors.email.validity.valid) {
+        showEmailError();
+        e.preventDefault();
+    } else if (!inputSelectors.country.validity.valid) {
+        showCountryError();
+        e.preventDefault();
+    } else if (!inputSelectors.zipCode.validity.valid) {
+        showZipCodeError();
+        e.preventDefault();
+    } else if (!inputSelectors.password.validity.valid) {
+        showPasswordError();
+        e.preventDefault();
+    } else if (
+        inputSelectors.confirmPassword.value !== inputSelectors.password.value
+    ) {
+        showPasswordError();
+        e.preventDefault();
     }
 });
